@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Техработы | Yundu</title>
+        <link rel="icon" type="image/png" href="https://assets.yundu.co/icon.png"></title>
+        <style>
+            
+            @font-face{
+            font-family:'Gotham Pro';
+            src:url('https://assets.yundu.co/GothamPro.ttf');
+        }
+@font-face{
+            font-family:'Gotham';
+            src:url('https://assets.yundu.co/gotham.ttf');
+        }
+        @font-face{
+            font-family:'Montserrat';
+            src:url('https://assets.yundu.co/montserrat.ttf');
+        }
+        @font-face{
+            font-family:'Montserrat Medium';
+            src:url('https://assets.yundu.co/montserratmedium.ttf');
+        }
+        @font-face{
+            font-family:'Montserrat SemiBold';
+            src:url('https://assets.yundu.co/bold.ttf');
+        }
+        :root{
+            --brand:#33d190;
+            --brand-focus:#28c282;
+            --error:#f36666;
+        }
+        *{
+            box-sizing:border-box;
+        }
+        html,body{
+            background:#f9f9f9;
+        margin:0;
+        padding:0;
+        font-size:1em;
+        padding-bottom:20px;
+        overflow-x: hidden;
+user-select:none;
+        }
+        p,h1,h2,h3,h4,h5,h6{
+            margin:0;
+        }
+        :focus{
+            outline:none;
+        }
+        p, span{
+            font-weight: 600;
+            line-height: 1.2em;
+font-size:1em;
+letter-spacing:0.3px;
+        font-family: 'Gotham Pro';
+        }
+        h1,h2{
+            font-family: 'Montserrat';
+        }
+        h3,h4,h5,h6{
+            font-family:'Montserrat SemiBold';
+        }
+        header{
+            padding:20px;
+            padding-bottom:10px;
+            display:flex;
+            justify-content:space-between;
+            align-items: center;
+        }
+        ::selection{
+            color:white;
+            background:var(--brand);
+        }
+        .logo{
+            width:40px;
+            height:40px;
+        }
+        .logo svg{
+            width:40px;
+            height:40px;
+        }
+        main{
+            padding:0 20px;  
+        }
+       main svg{
+           width:100px;
+           height:100px;
+       }
+       main h3{
+           font-size:1.4em;
+       }
+       .verify p{
+           text-align:center;
+       }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+                <style type="text/css">
+                    .st0{fill:#33D190;stroke:#33D190;stroke-width:35.1913;stroke-miterlimit:10;}
+                </style>
+                <path class="st0" d="M1689.3,243.1h-175.1c0,284.6-230.7,515.3-515.3,515.3S483.7,527.7,483.7,243.1h-173c0,0.3,0,0.7,0,1  c0,380.8,308.6,689.4,689.4,689.4s689.4-308.6,689.4-689.4C1689.3,243.8,1689.3,243.4,1689.3,243.1z"/>
+                <g>
+                    <path class="st0" d="M1689.3,1267.6h-175.1c0,284.6-230.7,515.3-515.3,515.3s-515.3-230.7-515.3-515.3h-173c0,0.3,0,0.7,0,1   c0,380.8,308.6,689.4,689.4,689.4s689.4-308.6,689.4-689.4C1689.3,1268.3,1689.3,1267.9,1689.3,1267.6z"/>
+        </g>
+                <rect x="1514.2" y="243.1" class="st0" width="175.1" height="1024.6"/>
+                <circle class="st0" cx="819.9" cy="166.7" r="124.7"/>
+                <circle class="st0" cx="1178" cy="166.7" r="124.7"/>
+                </svg>
+        </div>
+    </header>
+    <main>
+        <h3>Подтверждение почты</h3>
+        <div class="verify"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <circle cx="50" cy="50" fill="none" stroke="#3adc99" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+              <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.8s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+            </circle></svg></div>
+    </main>
+    <script>
+        const div = document.querySelector('.verify')
+        fetch('https://api.yundu.co/verify',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json;charset=utf-8'
+            },
+            body:JSON.stringify(getData())
+        }).then(response => response.json()).then(response =>{
+            switch(response.status){
+                case "ok":
+                div.innerHTML = '<p>Почта успешно подтверждена.</p>'
+                break;
+                case "verified":
+                div.innerHTML = '<p>Почта уже подтверждена.</p>'
+                break;
+                case "not match":
+                div.innerHTML = '<p>Неправильный код.</p>'
+                break;
+                case "error":
+                div.innerHTML = '<p>Ошибка.</p>'
+                break;
+                default:
+                div.innerHTML = '<p>Ошибка.</p>'
+            }
+        })
+        function getData(){
+            const url = new URLSearchParams(window.location.search);
+            return {userId:url.get('id'),secretCode:url.get('code')};
+        }
+    </script>
+</body>
+</html>

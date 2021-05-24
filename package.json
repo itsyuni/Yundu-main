@@ -1,0 +1,33 @@
+{
+  "name": "schoolplace",
+  "version": "0.2.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "npm ci && pm2 stop all && pm2 start ~/yundu/ecosystem.config.js"
+  },
+  "keywords": [
+    "school"
+  ],
+  "author": "Vladislav Gubarev",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "child-process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-subdomain": "^1.0.5",
+    "express-validator": "^6.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mailcomposer": "^4.0.2",
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^5.11.13",
+    "python-shell": "^2.0.3"
+  },
+  "devDependencies": {
+    "kill-port": "^1.6.1"
+  }
+}

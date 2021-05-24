@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Yundu - место только для детей</title>
+    <link rel="icon" type="image/png" href="https://assets.yundu.co/icon.png">
+    <style>
+        @font-face{
+            font-family:'Gotham Pro';
+            src:url('https://assets.yundu.co/GothamPro.ttf');
+        }
+@font-face{
+            font-family:'Gotham';
+            src:url('https://assets.yundu.co/gotham.ttf');
+        }
+        @font-face{
+            font-family:'Montserrat';
+            src:url('https://assets.yundu.co/montserrat.ttf');
+        }
+        @font-face{
+            font-family:'Montserrat Medium';
+            src:url('https://assets.yundu.co/montserratmedium.ttf');
+        }
+        @font-face{
+            font-family:'Montserrat SemiBold';
+            src:url('https://assets.yundu.co/bold.ttf');
+        }
+        :root{
+            --brand:#33d190;
+            --brand-focus:#28c282;
+        }
+        *{
+            box-sizing:border-box;
+        }
+        body{
+            background:#f9f9f9;
+        margin:0;
+        padding:0;
+        font-size:1em;
+        }
+        p,h1,h2,h3,h4,h5,h6{
+            margin:0;
+        }
+        p{
+            font-weight:600;
+            line-height: 1.2em;
+font-size:1em;
+letter-spacing:0.3px;
+        font-family: 'Gotham Pro';
+        }
+        h1,h2{
+            font-family: 'Montserrat';
+        }
+        h3,h4,h5,h6{
+            font-family:'Montserrat Medium';
+        }
+        a{
+            text-decoration: none;
+            color:initial;
+            -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+        font-family: 'Gotham';
+        }
+        .highlight{
+            height:18.4px;
+        }
+        .highlight a::after{
+            content:'';
+            height:2px;
+            width:0px;
+            background: var(--brand);
+            display: inline-block;
+            bottom:11.5px;
+            left:0;
+            position:relative;
+            transition:width .2s linear;
+        }
+        header a:hover::after{
+            content:'';
+            width: 100%;
+        }
+        
+        ::selection{
+            background-color:var(--brand);
+            color:white;
+        }
+        ::-moz-selection{
+            background-color:var(--brand);
+            color:white;
+        }
+        header{
+            width:100%; 
+            top:0;
+            left:0;
+            height:auto;
+            padding:20px;
+            display:flex;
+            justify-content: space-between;
+            height:85.4px;
+            align-items: center;
+        }
+        header .logo{
+            width:40px;
+            height:40px;
+        }
+        header ul{
+            display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+        }
+        header li{
+            margin-left: 10px;
+        }
+        header li button{
+            border:none;
+            padding:5px 10px;
+padding-top:7px;
+            color:white;
+            font-size: 0.9em;
+            border-radius:8px;
+            font-family: 'Gotham';
+            background:var(--brand);
+            transition:background .3s;
+        }
+        main h1:first-of-type{
+            margin:0 7vw;
+font-size:1.9em;
+            text-align: center;
+            margin-top:20px;
+        }
+        main h1:first-of-type span{
+            background-image:linear-gradient(140deg, rgba(129,167,247,1) 0%, rgba(27,105,230,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+user-select:none;
+        }
+        :focus{
+            outline:none;
+        }
+        main > p:first-of-type{
+        text-align:center;
+        font-size: 1.05em;
+        margin:0 7vw;
+        margin-top:7px;
+        }
+        .getstarted input{
+    border:2.2px solid rgba(0,0,0,0.05);
+            border-radius: 10px;
+            background:white;
+            color:black;
+            font-size:0.9em;
+            width:70%;
+            font-family: 'Gotham';
+            padding:11px;
+            margin-right:8px;
+            transition: border-color .2s;
+        }
+        input:focus{
+            border-color:var(--brand);
+        }
+        .getstarted{
+           width:100%;
+            padding:0 20px;
+            height: auto;
+            margin-top:10px;
+        }
+        .getstarted button, .end_btn button{
+            border:none;
+            color:white;
+            user-select: none;
+            background:var(--brand);
+            border-radius:10px;
+            padding:11px;
+            font-family: 'Gotham';
+line-height:initial;
+padding-top:12px;
+            font-size:0.9em;
+            transition: background .3s linear;
+        }
+        .getstarted button{
+            position: relative;
+            padding-top:11px;
+        }
+        
+        .getstarted button:focus, .end_btn button:focus, header li button:focus{
+            background:var(--brand-focus);
+        }
+        .getstarted > div{
+            display: flex;
+            padding-top:5px;
+            justify-content:center;
+        }
+        .overview{
+            width: 100%;
+    padding: 0 20px;
+    margin-top: 40px;
+        }
+        .overview_card{
+            display: flex;
+    border-radius: 20px;
+    background: white;
+    border:2.2px solid rgba(0,0,0,0.05);
+    padding:0 20px;
+    overflow: hidden;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-right: 25px;
+    margin-bottom:15px;
+    position: relative;
+    width: 100%;
+        }
+        .overview_icon{
+            height: 200px;
+    width: 200px;
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    border-radius: 15px;
+        }
+        .overview_icon svg{
+            width:200px;
+            height:200px;
+        }
+        .overview_text{
+            margin-top:120px;
+            margin-bottom:20px;
+        }
+        .overview_text p:first-of-type{
+            font-size:1.65em;
+            font-family: 'Montserrat SemiBold';
+            font-weight: 600;
+            margin-bottom:3px;
+letter-spacing:0.3px;
+word-spacing:0px;
+        }
+        .overview_text p:first-of-type span{
+            font-size:1.2em;
+            padding-left:1px;
+        }
+        .overview_card:last-of-type{
+            margin-bottom:0;
+        }
+.overview_text p:last-of-type{
+line-height:1.25em!important;
+font-size:1em;
+}
+        .end_btn{
+            margin:auto;
+            width:fit-content;
+            height:auto;
+        }
+        .end_btn button{
+            margin-top:9px;
+            padding:7px 12px;
+            font-size:0.95em;
+        }
+.end_heading{
+    text-align:center;
+    margin:0 25px;
+    font-family: 'Montserrat SemiBold';
+    font-size:1.3em;
+    margin-top:45px;
+}
+.footer{
+text-align:center;
+font-size:0.95em;
+color:#a6a4a4;
+margin:0 25px;
+margin-top:50px;
+user-select:none;
+margin-bottom:15px;
+}
+
+
+.home h1{
+    font-size:1.7em;
+    user-select: none;
+}
+.btn00,.btn10,.btn20{
+    display: none;
+}
+@media(min-width:490px){
+    .home h1{
+        font-size:2.1em;
+    }
+    header .logo{
+        width:45px;
+        height:45px;
+
+    }
+    
+    .end_heading{
+        font-size:1.5em;
+    }
+    header{
+        height: fit-content;
+    }
+
+.overview_card{
+    width:400px;
+    margin:0 auto;
+    margin-bottom:20px;
+    
+    }
+}
+@media(min-width:690px){
+    .home h1{
+        font-size:3em;
+    }
+    main,header{
+    z-index:3;
+    position: relative;
+}
+.end_heading{
+    font-size:1.6em;
+    margin-top:60px;
+    margin-bottom:10px;
+}
+.bg10{
+    opacity:0;
+    z-index:2;
+    width:100%;
+    background: linear-gradient(180deg, #fff, #fff 30%,rgb(249 131 157 / 47%) 100%);
+    height:100%;
+    top:0;
+    transition:opacity 1.5s;
+    left:0;
+    position:absolute;
+}
+.bg00{
+    opacity:0;
+    z-index:2;
+    width:100%;
+    background: linear-gradient(180deg, #fff,#fff 30%, #4b87ee6e 100%);
+    height:100%;
+    top:0;
+    transition:opacity 1.5s;
+    left:0;
+    position:absolute;
+}
+main > p:first-of-type{
+    margin:0;
+    margin-top:7px;
+}
+.bg20{
+    opacity:0;
+    display:block;
+    z-index:2;
+    width:100%;
+    background:linear-gradient(180deg, #fff,#fff 30%, #33d18f57 100%);
+    height:100%;
+    top:0;
+    transition:opacity 1.5s;
+    left:0;
+    position:absolute;
+}
+.home.bg1 .bg10, .home.bg0 .bg00, .home.bg2 .bg20{
+    opacity:1;
+}
+.getstarted button.btn1 .btn10, .getstarted button.btn0 .btn00, .getstarted button.btn2 .btn20{
+    opacity:1;
+}
+.btn00{
+    width: 100%;
+    top: 0;
+    transition:opacity 0.8s;
+    z-index:-1;
+    opacity: 0;
+    display:block;
+    height: 100%;
+    border-radius: 10px;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(140deg, rgb(129, 167, 247) 0%, rgb(27, 105, 230) 100%);
+}
+header .logo{
+    width:50px;
+    height:50px;
+}
+header{
+    padding:10px 15px;
+    height: fit-content;
+}
+.btn10{
+    width: 100%;
+    top: 0;
+    transition:opacity 0.8s;
+    z-index:-1;
+    display:block;
+    opacity: 0;
+    height: 100%;
+    border-radius: 10px;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(-30deg, rgba(222,36,77,1) 0%, rgba(251,108,145,1) 100%);
+}
+.btn20{
+    width: 100%;
+    top: 0;
+    transition:opacity 0.8s;
+    z-index:-1;
+    display:block;
+    opacity: 0;
+    height: 100%;
+    border-radius: 10px;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(-40deg, rgb(109 193 158) 0%, rgb(21, 230, 144) 100%);
+}   
+    .home{
+    height: 100vh;
+    z-index:1;
+    position: relative;
+}
+    .getstarted{
+        width:500px;
+        margin:auto;
+        margin-top:10px;
+    }
+    .getstarted div{
+        align-items: center;
+    }
+    .getstarted button{
+        background: none;
+        
+    pointer-events: none;
+    }
+    main{
+        width:600px;
+        margin:auto;
+        margin-top:18vh;
+    background: #ffffff75;
+    padding: 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    }
+    main h1:first-of-type{
+        margin:0;
+    }
+}
+@media(min-width:1119px){
+    main > h1:first-of-type{
+        font-size:3.5em;
+    }
+    main{
+        padding:30px 50px;
+        width:fit-content;
+    }
+    .overview{
+        display: flex;
+        width:1100px;
+        margin:auto;
+        margin-top:60px;
+    }
+    .overview_card{
+        width:350px;
+    
+    margin:0;
+    height:240px;
+    }
+    .overview > div:not(:last-of-type){
+        
+    margin-right:25px;
+    }
+    
+    main > p:first-of-type{
+        font-size:1.15em;
+    }
+}
+
+@media(min-width:1279px){
+    
+    main > h1:first-of-type{
+        font-size:3.8em;
+    }
+    main > p:first-of-type{
+        font-size:1.25em;
+    }
+    .overview{
+        width:1250px;
+    }
+    .overview_card{
+        width:400px;
+    }
+}
+        </style>
+</head>
+<body>
+    
+    <div class="home bg0">
+        
+        <div class="bg10"></div>
+        
+        <div class="bg00"></div>
+        <div class="bg20"></div>
+    <header>
+        
+<div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+        <style type="text/css">
+            .st0{fill:#33D190;stroke:#33D190;stroke-width:35.1913;stroke-miterlimit:10;}
+        </style>
+        <path class="st0" d="M1689.3,243.1h-175.1c0,284.6-230.7,515.3-515.3,515.3S483.7,527.7,483.7,243.1h-173c0,0.3,0,0.7,0,1  c0,380.8,308.6,689.4,689.4,689.4s689.4-308.6,689.4-689.4C1689.3,243.8,1689.3,243.4,1689.3,243.1z"/>
+        <g>
+            <path class="st0" d="M1689.3,1267.6h-175.1c0,284.6-230.7,515.3-515.3,515.3s-515.3-230.7-515.3-515.3h-173c0,0.3,0,0.7,0,1   c0,380.8,308.6,689.4,689.4,689.4s689.4-308.6,689.4-689.4C1689.3,1268.3,1689.3,1267.9,1689.3,1267.6z"/>
+        </g>
+        <rect x="1514.2" y="243.1" class="st0" width="175.1" height="1024.6"/>
+        <circle class="st0" cx="819.9" cy="166.7" r="124.7"/>
+        <circle class="st0" cx="1178" cy="166.7" r="124.7"/>
+        </svg>
+</div>
+<ul class="links">
+    <li class="highlight"><a href="#">О проекте</a></li>
+    <li><a href="/login"><button>Войти</button></a></li>
+</ul>
+    </header>
+    <main>
+        <h1>Место для <span class="changing">учёбы</span></h1>
+        <p>Здесь вы можете отдохнуть, сделать задания и просто пообщаться.</p>
+    <div class="getstarted">
+        <div>
+    <input type="text" placeholder="Придумай себе ник...">
+    <button class="start_btn btn0">Начнём?<div class="btn00"></div><div class="btn10"></div><div class="btn20"></div></button></div>
+    </div></div>
+    <div class="overview">
+        <div class="overview_card">
+            <div class="overview_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="rgb(65 124 230)" d="M13,10H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Zm5,0a4,4,0,0,0-3-3.86V5A3,3,0,0,0,9,5V6.14A4,4,0,0,0,6,10a4,4,0,0,0-4,4v3a3,3,0,0,0,3,3H6.18A3,3,0,0,0,9,22h6a3,3,0,0,0,2.82-2H19a3,3,0,0,0,3-3V14A4,4,0,0,0,18,10ZM6,18H5a1,1,0,0,1-1-1V14a2,2,0,0,1,2-2ZM11,5a1,1,0,0,1,2,0V6H11Zm5,14a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V18a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2Zm0-4.44A3.91,3.91,0,0,0,14,14H10a3.91,3.91,0,0,0-2,.56V10a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2ZM20,17a1,1,0,0,1-1,1H18V12a2,2,0,0,1,2,2Z"></path></svg>
+            </div>
+            <div class="overview_text">
+                <p>Всё в одном<span style="
+    color: rgb(65 124 230);
+">.</span></p>
+                <p>В Yundu есть всё необходимое для школы: ГДЗ, прокачанный калькулятор с уравнениями и дробями и т.д.</p>
+            </div>
+        </div>
+        <div class="overview_card">
+            <div class="overview_icon" style="top:-60px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="rgb(62 210 87)" d="M12,13a1.49,1.49,0,0,0-1,2.61V17a1,1,0,0,0,2,0V15.61A1.49,1.49,0,0,0,12,13Zm5-4H9V7a3,3,0,0,1,5.12-2.13,3.08,3.08,0,0,1,.78,1.38,1,1,0,1,0,1.94-.5,5.09,5.09,0,0,0-1.31-2.29A5,5,0,0,0,7,7V9a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V12A3,3,0,0,0,17,9Zm1,10a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z"></path></svg>
+            </div>
+            <div class="overview_text">
+                <p>Свобода<span style="
+    color: rgb(62 210 87);
+">.</span></p>
+                <p>Заниматься делами можно без опаски. В Yundu есть специальная кнопка для скрытия интерфейса.</p>
+            </div>
+        </div>
+        <div class="overview_card">
+            <div class="overview_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="rgb(245 232 69)" d="M12,2A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l-2,2a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,22h9A10,10,0,0,0,12,2Zm0,18H5.41l.93-.93a1,1,0,0,0,0-1.41A8,8,0,1,1,12,20Z"></path></svg>
+            </div>
+            <div class="overview_text">
+                <p>Общение<span style="
+    color: rgb(245 232 69);
+">.</span></p>
+                <p>Общайтесь везде: в общем чате, по школе, классу или лично.</p>
+            </div>
+        </div>
+        </div>
+        <h2 class="end_heading">Сделайте жизнь интересней уже сегодня:</h2>
+        <div class="end_btn"><button>Зарегистрироваться</button></div>
+    </main>
+    <p class="footer">Yundu Studios 2021.</p>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+    const start_btn = document.querySelector('.start_btn');
+    const start_input = document.querySelector('.getstarted input');
+    start_btn.onclick = function(){
+if(start_input.value != ''){
+location.href = '/register?username='+start_input.value
+}
+    }
+    let text = ["веселья", "детей","учёбы"];
+    let colors = ["linear-gradient(-30deg, rgba(222,36,77,1) 0%, rgba(251,108,145,1) 100%)", "linear-gradient(-40deg, rgb(109 193 158) 0%, rgb(21, 230, 144) 100%)","linear-gradient(140deg, rgba(129,167,247,1) 0%, rgba(27,105,230,1) 100%)"];
+let counter = 0;
+let elem = $(".changing");
+let bg = document.querySelector('.home');
+let pc = 0;
+let button = document.querySelector('.getstarted button');
+let pc2 = 1;
+setInterval(change, 4000);
+function change() {
+    elem.fadeOut(function(){
+        elem.html(text[counter]);
+        
+        elem.css('background-image',colors[counter])
+        counter++;
+        bg.classList.add('bg' + pc2);
+        bg.classList.remove('bg'+pc);
+        
+        button.classList.add('btn' + pc2);
+        button.classList.remove('btn'+pc);
+        if(pc2 == 2){
+
+        pc2 = 0
+    }
+        else{
+            pc2++;
+        }
+        if(pc == 2){
+        pc = 0;
+        }
+        else{
+            pc++;
+        }
+        if(counter >= text.length) { counter = 0; }
+        elem.fadeIn();
+    });
+}
+    </script>
+
+</body></html>
